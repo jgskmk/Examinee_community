@@ -1,0 +1,28 @@
+<header>
+  <h1>参考書がみつかる</h1>
+  <div class="header-infomation">
+    <button type="button" class="btn btn-danger btn-lg">新規登録</button>
+    <button type="button" class="btn btn-primary btn-lg">ログイン</button>
+    <button type="button" class="btn btn-warning btn-lg" onclick="location.href='/about'">このサイトについて</button>
+  </div>
+  <div class="search-form">
+    <input type="search" name="search" class="search-var">
+    <input type="submit" name="search" value="検索">
+  </div>
+  <div class="pulldown-menu">
+    <select name="school-year">
+      <option value="1">高校1年生</option>
+      <option value="2">高校2年生</option>
+      <option value="3">高校3年生(文系)</option>
+      <option value="4">高校3年生(理系)</option>
+    </select>
+  </div>
+</header>
+<h2>出品画像 説明が下に続いてる</h2>
+<% @posts.each do |post| %>
+  <div class="posts-all">
+    <%= post.content %>
+  </div>
+<% end %>
+
+</div>

@@ -1,0 +1,34 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+header {
+  background-image:url("/assets/book-168824_1920-400x270-MM-100.jpg");
+  /*background-repeat:  no-repeat;
+  background-size:contain;
+    width:100%;
+    height:400px; */
+    width: 100%;
+    height:400px;
+  background-size:100% 100%;
+}
+h1{
+  text-align: center;
+}
+
+.search-form{
+  padding-top:80px;
+  text-align: center;
+}
+
+.header-infomation{
+  text-align: right;
+}
+
+.search-var{
+  width:300px;
+}
+
+.pulldown-menu{
+  text-align: center;
+  margin-top:5px;
+}
