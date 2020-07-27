@@ -2,12 +2,13 @@ class UserController < ApplicationController
   def create
   end
   def create_user
-    user=User.new(name: params[:name],
+    @user=User.new(name: params[:name],
       mail_address: params[:mail_address])
-    if user.save
+    if @user.save
+      flash[:notice]="登録に成功しました"
       redirect_to("/home/top")
     else
-      redirect_to("/user/create")
+      render("user/create")
     end
   end
   def show
