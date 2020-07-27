@@ -1,9 +1,10 @@
 <header>
   <h1>参考書がみつかる</h1>
   <div class="header-infomation">
-    <button type="button" class="btn btn-danger btn-lg">新規登録</button>
-    <button type="button" class="btn btn-primary btn-lg">ログイン</button>
+    <button type="button" class="btn btn-danger btn-lg" onclick="location.href='/user/create'">新規登録</button>
+    <button type="button" class="btn btn-primary btn-lg" >ログイン</button>
     <button type="button" class="btn btn-warning btn-lg" onclick="location.href='/about'">このサイトについて</button>
+    <button type="button" class="btn btn-success btn-lg" onclick="location.href='/post/create'">本を出品</button>
   </div>
   <div class="search-form">
     <input type="search" name="search" class="search-var">
@@ -21,7 +22,7 @@
 <h2>出品画像 説明が下に続いてる</h2>
 <% @posts.each do |post| %>
   <div class="posts-all">
-    <%= post.content %>
+    <%= link_to post.content , "/post/#{post.id}" %>
   </div>
 <% end %>
 

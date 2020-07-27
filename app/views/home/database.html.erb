@@ -1,0 +1,12 @@
+<h1>終わったら消す</h1>
+<% @posts.each do |post| %>
+  <div class="posts-all">
+    <%= link_to post.content , "/post/#{post.id}" %>
+  </div>
+<% end %>
+<% @users.each do |user| %>
+  <div class="users-all">
+    <%= link_to user.name , "/user/#{user.id}"  %>
+    <%=  user.mail_address  %>
+  </div>
+<% end %>

@@ -4,4 +4,8 @@ class HomeController < ApplicationController
   end
   def about
   end
+  def database
+    @posts=Post.all
+    @users=User.all
+  end
 end
