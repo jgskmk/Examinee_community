@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   get 'post/:id' => "post#show"
   post 'create_user' => "user#create_user"
   get 'user/create' => "user#create"
-  get 'user/:id' => "user#show"
   get 'database' => "home#database"
+  get 'user/login' => "user#login"
+  post 'login_action' => "user#login_action"
+  post 'user/logout' => "user#logout"
+  get 'user/:id' => "user#show"
+
+
 
 
 

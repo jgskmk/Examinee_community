@@ -1,2 +1,8 @@
+<h1>ユーザー詳細ページ</h1>
+<% if @user %>
 <%= @user.name   %>
 <%= @user.mail_address %>
+<% end %>
+<% if @current_user.id==params[:id].to_i%>
+<h1>編集可能</h1>
+<% end %>

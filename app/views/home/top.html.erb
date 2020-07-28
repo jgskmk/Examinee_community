@@ -1,8 +1,15 @@
 <header>
   <h1>参考書がみつかる</h1>
+
   <div class="header-infomation">
     <button type="button" class="btn btn-danger btn-lg" onclick="location.href='/user/create'">新規登録</button>
-    <button type="button" class="btn btn-primary btn-lg" >ログイン</button>
+    <% if @current_user %>
+        <%= link_to("/user/logout", {method: "post"}) do %>
+          <button type="button" class="btn btn-primary btn-lg">ログアウト</button>
+        <% end %> 
+    <% else %>
+      <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/user/login'">ログイン</button>
+    <% end %>
     <button type="button" class="btn btn-warning btn-lg" onclick="location.href='/about'">このサイトについて</button>
     <button type="button" class="btn btn-success btn-lg" onclick="location.href='/post/create'">本を出品</button>
   </div>
