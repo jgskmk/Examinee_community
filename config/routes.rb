@@ -2,15 +2,19 @@ Rails.application.routes.draw do
   get 'home/top' => 'home#top'
   get 'about' => "home#about"
   get 'post/create' => "post#create"
-  post 'create_action' => "post#create_action"
+  post 'create_post' => "post#create_post"
+  get 'post/update/:id' => "post#update"
+  post 'update_post/:id' => "post#update_post"
   get 'post/:id' => "post#show"
   post 'create_user' => "user#create_user"
   get 'user/create' => "user#create"
   get 'database' => "home#database"
   get 'user/login' => "user#login"
-  post 'login_action' => "user#login_action"
-  post 'user/logout' => "user#logout"
+  post 'login_user' => "user#login_user"
+  post 'logout' => "user#logout"
   get 'user/:id' => "user#show"
+  post 'update_user/:id' => "user#update_user"
+  get 'user/update/:id' => "user#update"
 
 
 

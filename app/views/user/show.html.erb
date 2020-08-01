@@ -3,6 +3,6 @@
 <%= @user.name   %>
 <%= @user.mail_address %>
 <% end %>
-<% if @current_user.id==params[:id].to_i%>
-<h1>編集可能</h1>
+<% if @current_user && @current_user.id==params[:id].to_i%>
+<%= link_to("編集","/user/update/#{@current_user.id}") %>
 <% end %>

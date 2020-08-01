@@ -4,9 +4,9 @@
   <div class="header-infomation">
     <button type="button" class="btn btn-danger btn-lg" onclick="location.href='/user/create'">新規登録</button>
     <% if @current_user %>
-        <%= link_to("/user/logout", {method: "post"}) do %>
+        <%= link_to("/logout", {method: "post"}) do %>
           <button type="button" class="btn btn-primary btn-lg">ログアウト</button>
-        <% end %> 
+        <% end %>
     <% else %>
       <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/user/login'">ログイン</button>
     <% end %>
@@ -29,6 +29,8 @@
 <h2>出品画像 説明が下に続いてる</h2>
 <% @posts.each do |post| %>
   <div class="posts-all">
+    <%  @user=User.find_by(id: post.user_id) %>
+    <%= @user.name %>
     <%= link_to post.content , "/post/#{post.id}" %>
   </div>
 <% end %>

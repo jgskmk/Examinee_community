@@ -1,1 +1,6 @@
+<img src="<%= "/user_images/#{@post.user_id}"%>">
+<%= @post.user_name %>
 <%= @post.content %>
+<% if @post.user_id.to_i==@current_user.id %>
+<%= link_to("投稿の編集","/post/update/#{@post.id}") %>
+<% end %>

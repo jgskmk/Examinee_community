@@ -6,7 +6,9 @@
 <% end %>
 <% @users.each do |user| %>
   <div class="users-all">
+    <img src="<%= "/user_images/#{user.image_name}"%>">
     <%= link_to user.name , "/user/#{user.id}"  %>
     <%=  user.mail_address  %>
+    <%= user.id %>
   </div>
 <% end %>
