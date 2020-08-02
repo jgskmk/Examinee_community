@@ -1,38 +1,52 @@
 <header>
-  <h1>参考書がみつかる</h1>
-
-  <div class="header-infomation">
-    <button type="button" class="btn btn-danger btn-lg" onclick="location.href='/user/create'">新規登録</button>
+  <ul class="nav nav-tabs justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active">トップ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/about">このサイトについて</a>
+    </li>
     <% if @current_user %>
-        <%= link_to("/logout", {method: "post"}) do %>
-          <button type="button" class="btn btn-primary btn-lg">ログアウト</button>
-        <% end %>
-    <% else %>
-      <button type="button" class="btn btn-primary btn-lg" onclick="location.href='/user/login'">ログイン</button>
+      <%= link_to("/loguot", {method:'post'}) do %>
+      <li class="nav-item">
+        <a class="nav-link">ログアウト</a>
+      </li>
     <% end %>
-    <button type="button" class="btn btn-warning btn-lg" onclick="location.href='/about'">このサイトについて</button>
-    <button type="button" class="btn btn-success btn-lg" onclick="location.href='/post/create'">本を出品</button>
-  </div>
-  <div class="search-form">
-    <input type="search" name="search" class="search-var">
-    <input type="submit" name="search" value="検索">
-  </div>
-  <div class="pulldown-menu">
-    <select name="school-year">
-      <option value="1">高校1年生</option>
-      <option value="2">高校2年生</option>
-      <option value="3">高校3年生(文系)</option>
-      <option value="4">高校3年生(理系)</option>
-    </select>
-  </div>
+    <li class="nav-item">
+      <a class="nav-link " href="/post/create">投稿する</a>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <a class="nav-link " href="/user/login">ログイン</a>
+    </li>
+  <% end %>
+</ul>
+<h1>ExamnieeCommunity</h1>
+<div class="search-form">
+  <input type="search" name="search" class="search-var">
+  <input type="submit" name="search" value="検索">
+</div>
+<div class="pulldown-menu">
+  <select name="school-year">
+    <option value="1">高校1年生</option>
+    <option value="2">高校2年生</option>
+    <option value="3">高校3年生(文系)</option>
+    <option value="4">高校3年生(理系)</option>
+  </select>
+</div>
 </header>
 <h2>出品画像 説明が下に続いてる</h2>
-<% @posts.each do |post| %>
-  <div class="posts-all">
-    <%  @user=User.find_by(id: post.user_id) %>
-    <%= @user.name %>
-    <%= link_to post.content , "/post/#{post.id}" %>
-  </div>
-<% end %>
-
+<div class="container">
+    <table class="table table-hover table-striped">
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr class="d-flex">
+            <%@user=User.find_by(id: post.user_id) %>
+            <td class="col-xs-1"><%= image_tag "/user_images/#{@user.image_name}", :size =>'50x50' %></td>
+            <td class="col-xs-2"><%= @user.name %></td>
+            <td class="col-xs-9"><%= link_to post.content , "/post/#{post.id}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>

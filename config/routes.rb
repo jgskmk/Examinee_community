@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get 'user/:id' => "user#show"
   post 'update_user/:id' => "user#update_user"
   get 'user/update/:id' => "user#update"
-
+  post 'like/create/:id' => "like#create"
+  post 'like/destroy/:id' => "like#destroy"
 
 
 

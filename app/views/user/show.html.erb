@@ -4,5 +4,11 @@
 <%= @user.mail_address %>
 <% end %>
 <% if @current_user && @current_user.id==params[:id].to_i%>
-<%= link_to("編集","/user/update/#{@current_user.id}") %>
+  <%= link_to("ユーザー情報編集","/user/update/#{@current_user.id}") %>
+<% end %>
+<p>イイネした投稿一覧</p>
+<% @likes =Like.where(user_id: params[:id]) %>
+<% @likes.each do |like| %>
+<% @post= Post.find_by(id: like.post_id) %>
+<%= @post.content %>
 <% end %>

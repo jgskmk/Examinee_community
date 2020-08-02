@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  before_action :authenticate_user,only: [:create]
+  before_action :authenticate_user,only: [:create,:update]
   def show
     @post=Post.find_by(id: params[:id])
   end
