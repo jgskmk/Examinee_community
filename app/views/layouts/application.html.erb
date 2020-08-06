@@ -10,6 +10,34 @@
   </head>
 
   <body>
+    <ul class="nav nav-tabs justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="/home/top/1">トップ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/about" >このサイトについて</a>
+      </li>
+      <% if @current_user %>
+        <li class="nav-item">
+          <form name="form_name" method="POST" action="/logout">
+          <a class="nav-link" href="javascript:form_name.submit()">ログアウト</a>
+          </form>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/post/create">投稿する</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/<%=@current_user.id%>">ユーザー情報</a>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <a class="nav-link " href="/user/login">ログイン</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/create">新規登録</a>
+      </li>
+    <% end %>
+    </ul>
 
     <% if flash[:notice] %>
       <div class="flash">

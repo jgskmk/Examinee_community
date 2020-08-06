@@ -1,5 +1,12 @@
 <%= form_tag("/create_post") do %>
 <div class="form">
+  <% if @post %>
+    <% @post.errors.full_messages.each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
   <textarea name="content" rows="8" cols="80"></textarea>
   <input type="submit" value="投稿">
 </div>

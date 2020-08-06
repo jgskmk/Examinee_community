@@ -1,7 +1,7 @@
 <img src="<%= "/user_images/#{@post.user_id}"%>">
 <%= @post.user_name %>
 <%= @post.content %>
-<% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+<% if @current_user && Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
   <%= link_to( "/like/destroy/#{@post.id}", {method: "post"}) do %>
     <span class="fa fa-heart like-btn-unlike"></span>
   <% end %>

@@ -1,5 +1,7 @@
 class UserController < ApplicationController
   before_action :ensure_login_user,only: [:update,:passward]
+  protect_from_forgery :except => [:logout]
+  attr_accessor :remember_token
   def create
   end
   def create_user
@@ -15,7 +17,7 @@ class UserController < ApplicationController
     end
     if @user.save
       flash[:notice]="登録に成功しました。"
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
     else
       render("user/create")
     end
@@ -31,7 +33,7 @@ class UserController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:notice]="ログインしました。"
       session[:user_id]=@user.id
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
     else
       flash[:notice]="ログインに失敗しました。入力内容を確認してください。"
       render("user/login")

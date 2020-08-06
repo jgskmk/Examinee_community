@@ -1,26 +1,4 @@
 <header>
-  <ul class="nav nav-tabs justify-content-end">
-    <li class="nav-item">
-      <a class="nav-link active">トップ</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/about">このサイトについて</a>
-    </li>
-    <% if @current_user %>
-      <%= link_to("/loguot", {method:'post'}) do %>
-      <li class="nav-item">
-        <a class="nav-link">ログアウト</a>
-      </li>
-    <% end %>
-    <li class="nav-item">
-      <a class="nav-link " href="/post/create">投稿する</a>
-    </li>
-  <% else %>
-    <li class="nav-item">
-      <a class="nav-link " href="/user/login">ログイン</a>
-    </li>
-  <% end %>
-</ul>
 <h1>ExamnieeCommunity</h1>
 <div class="search-form">
   <input type="search" name="search" class="search-var">
@@ -37,16 +15,18 @@
 </header>
 <h2>出品画像 説明が下に続いてる</h2>
 <div class="container">
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
     <table class="table table-hover table-striped">
       <tbody>
         <% @posts.each do |post| %>
           <tr class="d-flex">
             <%@user=User.find_by(id: post.user_id) %>
             <td class="col-xs-1"><%= image_tag "/user_images/#{@user.image_name}", :size =>'50x50' %></td>
-            <td class="col-xs-2"><%= @user.name %></td>
+            <td class="col-xs-2"><%= link_to(@user.name, "/user/#{@user.id}") %></td>
             <td class="col-xs-9"><%= link_to post.content , "/post/#{post.id}" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
 </div>

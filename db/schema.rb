@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_072439) do
+ActiveRecord::Schema.define(version: 2020_08_06_071030) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_072439) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "password_digest"
+    t.string "remember_digest"
   end
 
 end
