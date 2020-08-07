@@ -1,7 +1,7 @@
 class UserController < ApplicationController
   before_action :ensure_login_user,only: [:update,:passward]
   protect_from_forgery :except => [:logout]
-  attr_accessor :remember_token
+  include UserHelper
   def create
   end
   def create_user
@@ -33,6 +33,7 @@ class UserController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:notice]="ログインしました。"
       session[:user_id]=@user.id
+      params[:remember_me] == '1' ? remember(@user) : forget(@user)
       redirect_to("/home/top/1")
     else
       flash[:notice]="ログインに失敗しました。入力内容を確認してください。"
@@ -40,9 +41,13 @@ class UserController < ApplicationController
     end
   end
   def logout
+    @user=User.find_by(id: @current_user.id)
+    @user.remember_digest=nil
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
     session[:user_id]=nil
     flash[:notice]="ログアウトしました。"
-    redirect_to("/home/top")
+    redirect_to("/home/top/1")
   end
   def update
     @user= User.find_by(id: params[:id])
