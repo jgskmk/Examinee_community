@@ -1,21 +1,26 @@
 <%= form_tag("/login_user") do %>
-<div class="form">
-  <% if @user %>
-    <% @user.errors.full_messages.each do |message| %>
-      <div class="form-error">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-  <p>ユーザー名</p>
-  <input name="name">
-  <p>メールアドレス</p>
-  <input name="mail_address">
-  <p>パスワード</p>
-  <input type="password" name="password">
-  <p>
-  <input type="checkbox" name=remember_me value="1" >ログイン情報をブラウザに記録させますか？（記録するとログアウトしない限りログイン情報の入力が不要になります)
-  </p>
-  <input type="submit" value="ログイン">
+<div class="container ">
+  <div class="row">
+    <div class="form">
+      <% if @user %>
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+      <p>ユーザー名</p>
+      <input name="name" size="40"  placeholder="20文字まで入力可能です">
+      <p>メールアドレス</p>
+      <input name="mail_address" size="40"   placeholder="info@example.com">
+      <p>パスワード</p>
+      <input type="password" name="password" size="40" >
+      <p>
+        <input type="checkbox" name="remember_me" value="1">ログイン情報をブラウザに記録させますか？（ログアウトしない限りログインが不要になります)
+      </p>
+      <input type="submit" value="ログイン" class="btn-primary btn-lg">
+    </div>
+  </div>
 </div>
+
 <% end %>

@@ -1,18 +1,22 @@
 <%= form_tag("/update_user/#{params[:id]}",{multipart:true}) do %>
-<div class="form">
-  <% if @user %>
-    <% @user.errors.full_messages.each do |message| %>
-      <div class="form-error">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-  <p>ユーザー名</p>
-  <input name="name" value="<%= @user.name %>">
-  <p>画像</p>
-  <input name="image" type="file">
-  <p>メールアドレス</p>
-  <input name="mail_address" value="<%= @user.mail_address %>">
-  <input type="submit" value="保存">
+<div class="container">
+  <div class="row">
+    <div class="form">
+      <% if @user %>
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+      <p>ユーザー名</p>
+      <input name="name" value="<%= @user.name %>">
+      <p>メールアドレス</p>
+      <input name="mail_address" value="<%= @user.mail_address %>">
+      <p>プロフィール画像</p>
+      <input name="image" type="file">
+      <input type="submit" value="保存" class="btn btn-primary ">
+    </div>
+  </div>
 </div>
 <% end %>
