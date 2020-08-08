@@ -1,0 +1,32 @@
+<div class="container">
+  <% if @users %>
+    <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
+    <table class="table table-hover table-striped">
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="d-flex">
+            <td class="col-xs-1"><%= image_tag "/user_images/#{user.image_name}", :size =>'50x50' %></td>
+            <td class="col-xs-2"><%= link_to(user.name, "/user/#{user.id}") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
+  <% end %>
+  <% if @posts %>
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
+    <table class="table table-hover table-striped">
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr class="d-flex">
+            <%user=User.find_by(id: post.user_id) %>
+            <td class="col-xs-1"><%= image_tag "/user_images/#{user.image_name}", :size =>'50x50' %></td>
+            <td class="col-xs-2"><%= link_to(user.name, "/user/#{user.id}") %></td>
+            <td class="col-xs-9"><%= link_to post.content , "/post/#{post.id}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
+  <% end %>
+</div>

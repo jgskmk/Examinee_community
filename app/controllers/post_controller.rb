@@ -11,7 +11,7 @@ class PostController < ApplicationController
     @post.user_name=@current_user.name
     if @post.save
       flash[:notice]="投稿しました。"
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
     else
       render("post/create")
     end

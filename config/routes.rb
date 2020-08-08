@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'home/top/:page' => 'home#top'
   get 'about' => "home#about"
+  get 'search/:page' => "home#search"
   get 'post/create' => "post#create"
   post 'create_post' => "post#create_post"
   get 'post/update/:id' => "post#update"

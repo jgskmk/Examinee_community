@@ -1,17 +1,17 @@
 <header>
 <h1>ExamnieeCommunity</h1>
+<%= form_tag("/search/1",{method: "get"}) do %>
 <div class="search-form">
+  <div class="pulldown-menu">
+    <select name="search_option">
+      <option value="1">ユーザーを検索</option>
+      <option value="2">投稿を検索</option>
+    </select>
+  </div>
   <input type="search" name="search" class="search-var">
-  <input type="submit" name="search" value="検索">
+  <input type="submit" value="検索">
 </div>
-<div class="pulldown-menu">
-  <select name="school-year">
-    <option value="1">高校1年生</option>
-    <option value="2">高校2年生</option>
-    <option value="3">高校3年生(文系)</option>
-    <option value="4">高校3年生(理系)</option>
-  </select>
-</div>
+<% end  %>
 </header>
 <h2>出品画像 説明が下に続いてる</h2>
 <div class="container">
