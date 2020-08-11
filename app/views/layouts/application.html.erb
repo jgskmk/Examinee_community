@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
     <ul class="nav nav-tabs justify-content-end">
       <li class="nav-item">
         <a class="nav-link" href="/home/top/1">トップ</a>
@@ -20,7 +21,7 @@
       <% if @current_user %>
         <li class="nav-item">
           <form name="form_name" method="POST" action="/logout">
-          <a class="nav-link" href="javascript:form_name.submit()">ログアウト</a>
+          <a class="nav-link" href="javascript:form_name.submit()" onclick="return confirm('ログアウトしますか?')">ログアウト</a>
           </form>
         </li>
       <li class="nav-item">
@@ -28,6 +29,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/user/<%=@current_user.id%>">ユーザー情報</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/meetings">スケジュール</a>
       </li>
     <% else %>
       <li class="nav-item">
@@ -38,6 +42,10 @@
       </li>
     <% end %>
     </ul>
+
+
+
+
 
     <% if flash[:notice] %>
       <div class="flash">

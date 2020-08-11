@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def ensure_login_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません。"
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
     end
   end
 end

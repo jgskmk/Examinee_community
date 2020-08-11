@@ -1,0 +1,12 @@
+<p>予定一覧</p>
+
+<% @meetings.each do |meeting| %>
+  <tr>
+    <td><%= meeting.name %></td>
+    <td><%= meeting.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+    <td><%= meeting.end_time %></td>
+    <td><%= link_to '詳細', meeting %></td>
+    <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
+    <td><%= link_to '削除', meeting, method: :delete, data: { confirm: '削除してもいいですか?' } %></td><br>
+  </tr>
+<% end %>

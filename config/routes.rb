@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :meetings
+  get 'meetings_all' => 'meetings#meetings_all'
   get 'home/top/:page' => 'home#top'
   get 'about' => "home#about"
   get 'search/:page' => "home#search"

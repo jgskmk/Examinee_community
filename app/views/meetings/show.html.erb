@@ -1,0 +1,28 @@
+
+
+<p>
+  <strong>予定</strong>
+  <%= @meeting.name %>
+</p>
+
+<p>
+  <strong>予定時刻</strong>
+  <%= @meeting.start_time.strftime("%Y-%m-%d %H:%M:%S") %>
+</p>
+
+<p>
+  <strong>予定時刻まであと</strong>
+  <% days=(@meeting.start_time-Time.now)/86400 %>
+  <% times=(@meeting.start_time-Time.now)%86400/3600 %>
+  <% minutes=(@meeting.start_time-Time.now)%86400%3600/60 %>
+  <% seconds=(@meeting.start_time-Time.now)%86400%3600%60 %>
+  <%= days.floor.to_s+"日"+times.floor.to_s+"時間"+minutes.floor.to_s+"分"+seconds.floor.to_s+"秒" %>
+</p>
+
+<!--<p>
+  <strong>終了時刻</strong>
+  <%= @meeting.end_time %>
+</p> -->
+
+<%= link_to '編集', edit_meeting_path(@meeting) %> <!-- (@meeting.id )-->
+<%= link_to 'スケジュールに戻る', meetings_path %>

@@ -1,0 +1,28 @@
+<h1>スケジュール</h1>
+<div class="create-schedule">
+<button type="button" class="btn btn-primary btn-lg" onclick="location.href='/meetings/new'">新しい予定を作成</button>
+</div>
+<div class="schedule-index">
+<p>最近5件の予定</p>
+<% @meetings.slice(0..4).each do |meeting| %>
+  <tr>
+    <td><%= meeting.name %></td>
+    <td><%= meeting.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+    <td><%= meeting.end_time %></td>
+    <td><%= link_to '詳細', meeting %></td>
+    <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
+    <td><%= link_to '削除', meeting, method: :delete, data: { confirm: '削除してもいいですか?' } %></td><br>
+  </tr>
+<% end %>
+</div>
+<%= link_to('予定一覧', '/meetings_all') %>
+
+<%= month_calendar events: @meetings do |date, meetings| %>
+<%= date.day %>
+
+<% meetings.each do |meeting| %>
+  <div class="schedule-calendar">
+    <%= link_to(meeting.name,"meetings/#{meeting.id}",:style=>"color:black;") %>
+  </div>
+<% end %>
+<% end %>

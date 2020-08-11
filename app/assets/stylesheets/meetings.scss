@@ -1,0 +1,39 @@
+// Place all the styles related to the Meetings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.simple-calendar {
+  .day {max-width: 14%;}
+  .wday-0 {background-color: #fa96a7;}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {background-color: #96d4fa;}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+
+  .has-events {}
+}
+
+.create-schedule{
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+.calendar-heading{
+  font-size: 1.7rem;
+}
+.calendar-heading{
+  text-align: center;
+}
+.schedule-calendar{
+  color:red;
+}

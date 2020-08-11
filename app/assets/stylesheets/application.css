@@ -12,10 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
 .like-btn-unlike{
   color:#ff2581;
 }
 .like-btn{
   color:#8899a6;
+}
+
+
+.nav-tabs{
+  background-color: dimgrey;
+  color:white;
+}
+.nav-link{
+  color:white;
 }
