@@ -19,11 +19,20 @@
     <table class="table table-hover table-striped">
       <tbody>
         <% @posts.each do |post| %>
-          <tr class="d-flex">
+          <tr class="d-flex" id="post-table">
             <%@user=User.find_by(id: post.user_id) %>
-            <td class="col-xs-1"><%= image_tag "/user_images/#{@user.image_name}", :size =>'50x50' %></td>
-            <td class="col-xs-2"><%= link_to(@user.name, "/user/#{@user.id}") %></td>
-            <td class="col-xs-9"><%= link_to post.content , "/post/#{post.id}" %></td>
+            <td class="col-xs-1 post-column post-image"><%= image_tag "/user_images/#{@user.image_name}", :size =>'50x50' %></td>
+            <td class="col-xs-2 post-column post-user"><%= link_to(@user.name, "/user/#{@user.id}",class: "editlink") %></td>
+            <td class="col-xs-8 post-column post-content"><%= link_to post.content , "/post/#{post.id}",class: "editlink"%></td>
+            <td class="col-xs-1 post-column post-heart" ><% if @current_user && Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+              <%= link_to( "/like/destroy/#{post.id}", {method: "post"}) do %>
+                <span class="fa fa-heart like-btn-unlike"></span>
+              <% end %>
+            <% else %>
+              <%= link_to( "/like/create/#{post.id}", {method: "post"}) do %>
+                <span class="fa fa-heart like-btn"></span>
+                <% end %>
+            <% end %></td>
           </tr>
         <% end %>
       </tbody>

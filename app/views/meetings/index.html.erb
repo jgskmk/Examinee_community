@@ -22,7 +22,7 @@
 
 <% meetings.each do |meeting| %>
   <div class="schedule-calendar">
-    <%= link_to(meeting.name,"meetings/#{meeting.id}",:style=>"color:black;") %>
+    <%= link_to(meeting.name,"meetings/#{meeting.id}",class: "editlink") %>
   </div>
 <% end %>
 <% end %>

@@ -29,3 +29,7 @@
 .nav-link{
   color:white;
 }
+.editlink, .editlink:hover{
+  color:black;
+  background-color: transparent;
+}
