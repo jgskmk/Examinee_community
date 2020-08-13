@@ -2,10 +2,12 @@
 
 one:
   user_id: MyString
-  study_time: 1
-  study_date: 2020-08-12
+  hours: 1
+  minutes: 1
+  date: 2020-08-12
 
 two:
   user_id: MyString
-  study_time: 1
-  study_date: 2020-08-12
+  hours: 1
+  minutes: 1
+  date: 2020-08-12

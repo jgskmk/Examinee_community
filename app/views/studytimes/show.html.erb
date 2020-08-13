@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <strong>Hours:</strong>
+  <%= @studytime.hours %>
+</p>
+
+<p>
+  <strong>Minutes:</strong>
+  <%= @studytime.minutes %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @studytime.date %>
+</p>
+
+<%= link_to '編集', edit_studytime_path(@studytime) %> |
+<%= link_to 'グラフに戻る', studytimes_path %>

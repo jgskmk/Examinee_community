@@ -28,6 +28,8 @@ gem 'will_paginate',           '3.3.0'
 
 gem 'bootstrap-will_paginate', '1.0.0'
 
+gem "chartkick"
+
 gem "simple_calendar", "~> 2.0"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

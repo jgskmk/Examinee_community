@@ -1,0 +1,33 @@
+<%= form_with(model: studytime, local: true) do |form| %>
+  <% if studytime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(studytime.errors.count, "error") %> prohibited this studytime from being saved:</h2>
+
+      <ul>
+        <% studytime.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.number_field :hours %>
+    <%= form.label "時間" %>
+
+
+    <%= form.number_field :minutes %>
+    <%= form.label "分" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :日付 %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

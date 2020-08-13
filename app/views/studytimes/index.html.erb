@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Studytimes</h1>
+<p>直近10日間の勉強時間</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <table>
+        <tbody>
+          <% @studytimes.slice(0..4).each do |studytime| %>
+            <tr>
+              <td><%= studytime.date %></td>
+              <td><%= studytime.hours.to_s+"時間" %></td>
+              <td><%= studytime.minutes.to_s+"分" %></td>
+              <td><%= link_to '詳細', studytime %></td>
+              <td><%= link_to '編集', edit_studytime_path(studytime) %></td>
+              <td><%= link_to '削除', studytime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <table>
+        <tbody>
+          <% @studytimes.slice(5..9).each do |studytime| %>
+            <tr>
+              <td><%= studytime.date %></td>
+              <td><%= studytime.hours.to_s+"時間" %></td>
+              <td><%= studytime.minutes.to_s+"分" %></td>
+              <td><%= link_to '詳細', studytime %></td>
+              <td><%= link_to '編集', edit_studytime_path(studytime) %></td>
+              <td><%= link_to '削除', studytime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div><%= link_to("記録した勉強時間一覧","/studytimes_all")%></div>
+
+<br>
+<%= line_chart @studytimes.slice(0..10).pluck(:date, :total_minutes) %>
+<!-- 追記 -->
+
+
+  <%= link_to '勉強時間の入力', new_studytime_path %>

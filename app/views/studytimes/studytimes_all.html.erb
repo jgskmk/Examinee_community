@@ -1,0 +1,11 @@
+<% @studytimes.each do |studytime| %>
+  <tr>
+    <td><%= studytime.date %></td>
+    <td><%= studytime.hours.to_s+"時間" %></td>
+    <td><%= studytime.minutes.to_s+"分" %></td>
+    <td><%= link_to 'Show', studytime %></td>
+    <td><%= link_to 'Edit', edit_studytime_path(studytime) %></td>
+    <td><%= link_to 'Destroy', studytime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr><br>
+<% end %>
+<%= link_to 'グラフに戻る', studytimes_path %>
