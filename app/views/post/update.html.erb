@@ -4,3 +4,4 @@
   <input type="submit" value="編集">
 </div>
 <% end %>
+<%= link_to"投稿の削除","/post/destroy/#{@post.id}", method: :delete, data: {confirm: "投稿を削除してもよろしいですか？"}  %>

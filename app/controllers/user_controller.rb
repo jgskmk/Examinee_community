@@ -1,5 +1,6 @@
 class UserController < ApplicationController
-  before_action :ensure_login_user,only: [:update,:passward]
+  before_action :ensure_login_user,only: [:update]
+  before_action :authenticate_user,only: [:delete]
   protect_from_forgery :except => [:logout]
   include UserHelper
   def create
@@ -17,7 +18,7 @@ class UserController < ApplicationController
     end
     if @user.save
       flash[:notice]="登録に成功しました。"
-      redirect_to("/home/top/1")
+      redirect_to("/user/login")
     else
       render("user/create")
     end
@@ -68,6 +69,20 @@ class UserController < ApplicationController
       render("user/update")
     end
   end
+
+  def destroy
+      @user=User.find_by(id: @current_user.id)
+      @user.remember_digest=nil
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
+      session[:user_id]=nil
+      @user.destroy
+      flash[:notice]="アカウントを削除しました。"
+      redirect_to("/home/top/1")
+    end
+
+
+
 
 
 end

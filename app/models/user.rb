@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :posts,dependent: :destroy
+  has_many :studytimes,dependent: :destroy
+  has_many :meetings,dependent: :destroy
   has_secure_password
   attr_accessor :remember_token
   validates :name, presence: true, uniqueness: true,
