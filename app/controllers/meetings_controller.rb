@@ -79,7 +79,7 @@ class MeetingsController < ApplicationController
 
     def ensure_meeting_user
       @meeting = Meeting.find(params[:id])
-      if @current_user.id != @meeting.user_id.to_i
+      if @current_user.id != @meeting.user_id
         flash[:notice] = "権限がありません。"
         redirect_to("/home/top/1")
       end

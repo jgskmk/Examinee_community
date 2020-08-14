@@ -18,7 +18,7 @@ class PostController < ApplicationController
   end
   def update
     @post=Post.find_by(id: params[:id])
-    if @current_user.id != @post.user_id.to_i
+    if @current_user.id != @post.user_id.
       flash[:notice]="権限がありません。"
       redirect_to("/home/top")
     end
@@ -27,7 +27,7 @@ class PostController < ApplicationController
       @post.content=params[:content]
       @post.save
       flash[:notice]="投稿を編集しました。"
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
 
 
   end
