@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_010014) do
+ActiveRecord::Schema.define(version: 2020_08_18_040808) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_08_14_010014) do
     t.datetime "remember_created_at"
     t.string "password_digest"
     t.string "remember_digest"
+    t.index ["mail_address"], name: "index_users_on_mail_address", unique: true, length: 255
   end
 
 end

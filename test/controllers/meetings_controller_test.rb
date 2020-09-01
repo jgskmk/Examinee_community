@@ -5,14 +5,14 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
     @meeting = meetings(:one)
   end
 
-  test "should get index" do
+  test "should redirect index when not logged in" do
     get meetings_url
-    assert_response :success
+    assert_redirected_to user_login_url
   end
 
-  test "should get new" do
+  test "should redirect new when not logged in" do
     get new_meeting_url
-    assert_response :success
+    assert_redirected_to user_login_url
   end
 
   test "should create meeting" do
@@ -23,14 +23,14 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to meeting_url(Meeting.last)
   end
 
-  test "should show meeting" do
+  test "should redirect show when not logged in" do
     get meeting_url(@meeting)
-    assert_response :success
+    assert_redirected_to user_login_url
   end
 
-  test "should get edit" do
+  test "should redirect edit when not logged in" do
     get edit_meeting_url(@meeting)
-    assert_response :success
+    assert_redirected_to user_login_url
   end
 
   test "should update meeting" do

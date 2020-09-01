@@ -20,7 +20,7 @@
       </li>
       <% if @current_user %>
         <li class="nav-item">
-          <form name="form_name" method="POST" action="/logout">
+          <form name="form_name" method="delete" action="/logout">
           <a class="nav-link" href="javascript:form_name.submit()" onclick="return confirm('ログアウトしますか?')">ログアウト</a>
           </form>
         </li>

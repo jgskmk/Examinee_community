@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "home#top"
   resources :studytimes
   resources :meetings
   get 'meetings_all' => 'meetings#meetings_all'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get 'database' => "home#database"
   get 'user/login' => "user#login"
   post 'login_user' => "user#login_user"
-  post 'logout' => "user#logout"
+  delete 'logout' => "user#logout"
   get 'user/:id' => "user#show"
   post 'update_user/:id' => "user#update_user"
   get 'user/update/:id' => "user#update"

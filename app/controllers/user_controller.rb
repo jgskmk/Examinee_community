@@ -41,6 +41,7 @@ class UserController < ApplicationController
       render("user/login")
     end
   end
+
   def logout
     @user=User.find_by(id: @current_user.id)
     @user.remember_digest=nil
@@ -50,6 +51,7 @@ class UserController < ApplicationController
     flash[:notice]="ログアウトしました。"
     redirect_to("/home/top/1")
   end
+
   def update
     @user= User.find_by(id: params[:id])
   end
@@ -64,7 +66,7 @@ class UserController < ApplicationController
     end
     if @user.save
       flash[:notice]="ユーザー情報を編集しました。"
-      redirect_to("/home/top")
+      redirect_to("/home/top/1")
     else
       render("user/update")
     end

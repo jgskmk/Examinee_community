@@ -1,8 +1,10 @@
 class PostController < ApplicationController
   before_action :authenticate_user,only: [:create,:update,:destroy]
+
   def show
     @post=Post.find_by(id: params[:id])
   end
+
   def create
   end
   def create_post
@@ -17,7 +19,7 @@ class PostController < ApplicationController
     end
   end
   def update
-    @post=Post.find_by(id: params[:id])
+    @post=Post.find_by(id: params[:id]) #post.idとpost.user_idは異なるためauthenticate_userでは不可
     if @current_user.id != @post.user_id
       flash[:notice]="権限がありません。"
       redirect_to("/home/top/1")
